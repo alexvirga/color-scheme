@@ -1,10 +1,43 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+
+.color-block{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%
+}
+
+.colors-container{
+ 
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.color-chooser{
+margin: 20px;
+  background-color: #ffffffeb;
+  display: flex;
+  align-items: center;
+
+}
+
+.home{
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 @media (prefers-reduced-motion: no-preference) {

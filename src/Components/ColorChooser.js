@@ -1,69 +1,105 @@
 import React, { Component } from "react";
 import ColorScheme from "color-scheme";
-import Slider from '@material-ui/core/Slider';
+import Hue from "./Hue";
+import Distance from "./Distance";
+import ColorBlock from "./ColorBlock";
+import Slider from "@material-ui/core/Slider";
+import Scheme from "./Scheme";
+import Variation from "./Variation";
+import Button from "@material-ui/core/Button";
+import ButtonGroup from "@material-ui/core/ButtonGroup";
+import ToggleButton from "@material-ui/lab/ToggleButton";
+import ToggleButtonGroup from "@material-ui/lab/ToggleButtonGroup";
 
 class ColorChooser extends Component {
-    state = {
-        colors: [],
-        hue: 10,
-        sceheme: "triade",
-        variation: "pastel",
-        distance: .01,
+  state = {
+    colors: [],
+    hue: 260,
+    scheme: "monochromatic",
+    variation: "light",
+    distance: 0.01,
+  };
 
-    }
-
-    componentDidMount(){
-        this.newScheme()
-    }
-     
-    
-        
-    
-
+  componentDidMount() {
+    this.newScheme();
+  }
 
   newScheme = () => {
     const scheme = new ColorScheme();
     scheme
-      .from_hue(this.state.hue) 
-      .scheme(this.state.sceheme) 
+      .from_hue(this.state.hue)
+      .scheme(this.state.scheme)
       .distance(this.state.distance)
 
-      .variation(this.state.variation); 
+      .variation(this.state.variation);
 
     var colors = scheme.colors();
-    this.setState({colors: colors})
+    this.setState({ colors: colors });
   };
 
   handleHueChange = (event, newValue) => {
-      console.log(newValue)
-      this.setState({hue: newValue})
-      this.newScheme()
+    this.setState({ hue: newValue }, () => this.newScheme());
+  };
 
-  }
+  handleDistanceChange = (event, newValue) => {
+    this.setState({ distance: newValue });
+    this.newScheme();
+  };
+
+  handleScheme = (event, newValue) => {
+    console.log(newValue);
+    this.setState({ scheme: `${newValue}` }, () => this.newScheme());
+  };
+
+  handleVariation = (event, newValue) => {
+    this.setState({ variation: `${newValue}` }, () => this.newScheme());
+  };
 
   render() {
-
- 
     return (
+        <div className="home">
+
+       
+        <div className="colors-container">
+        {this.state.colors.map((color) => (
+            <ColorBlock color={color} /> 
+  
+        ))}
+        </div>
+      
+      <div className="color-chooser">
+
         <div>
-            <div>
-            {this.state.colors.map(color => <div style={{backgroundColor: `#${color}` }}> {color} </div>)}
+          <div>
+            <Hue
+              handleHueChange={this.handleHueChange}
+              value={this.state.hue}
+            />
+          </div>
 
-            </div>
+          <div>
+            <Scheme
+              handleScheme={this.handleScheme}
+              scheme={this.state.scheme}
+            />
+          </div>
 
-            <div>
-<Slider value={this.state.hue} onChange={this.handleHueChange} max={180} />
+          <div>
+            <Variation
+              handleVariation={this.handleVariation}
+              variation={this.state.variation}
+            />
+          </div>
 
-</div>
-
-
-    </div> 
-
-    )
-
+          <div>
+<Distance handleDistanceChange={this.handleDistanceChange} distance={this.state.distance} />
+          </div>
+        </div>
+      </div>
+      </div>
+      
+    );
   }
 }
-
-
 
 export default ColorChooser;
