@@ -67,7 +67,7 @@ class ColorChooser extends Component {
         ))}
         </div>
       
-      <div className="color-chooser" style={{backgroundColor:`#${this.state.colors[2]}`}}>
+      <div className="color-chooser" style={{backgroundColor:`#${this.state.colors[2]}59`}}>
 
         <div>
           <div>
