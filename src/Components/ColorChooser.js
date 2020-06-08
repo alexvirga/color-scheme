@@ -60,12 +60,7 @@ class ColorChooser extends Component {
         <div className="home">
 
        
-        <div className="colors-container">
-        {this.state.colors.map((color) => (
-            <ColorBlock color={color} /> 
-  
-        ))}
-        </div>
+
       
       <div className="color-chooser" style={{backgroundColor:`#${this.state.colors[2]}59`}}>
 
@@ -96,6 +91,13 @@ class ColorChooser extends Component {
           </div>
         </div>
       </div>
+
+      <div className="colors-container">
+        {this.state.colors.map((color) => (
+            <ColorBlock color={color} /> 
+  
+        ))}
+        </div>
       </div>
       
     );

@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: flex;
+  height: 100vh;
+  width: 100vw
   
 }
 
@@ -19,9 +22,9 @@
 
 .colors-container{
  
-  height: 100vh;
-  width: 100vw;
-
+  height: 100%;
+width: 100%;
+min-width: 200px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -29,8 +32,8 @@
 
 .color-chooser{
   margin: 0px 10px 0px 0px;
-  padding: 15px;
 
+  padding: 15px;
   display: flex;
   align-items: center;
 
@@ -38,7 +41,10 @@
 
 .home{
   display: flex;
-  flex-direction: row-reverse;
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+
 }
 
 @media (prefers-reduced-motion: no-preference) {
